@@ -54,6 +54,20 @@ describe('Brique', function() {
       brique.childs[0].should.be.instanceOf(Brique.registery['hello']);
     });
 
+    it('throws error when brique is not in the registery', function() {
+      var BriqueDoesNotExist = Brique.extend({
+        content: function() {
+          return '<div data-brique-kind="hi"></div>';
+        }
+      });
+
+      function briqueDoesNotExist() {
+        new BriqueDoesNotExist(el);
+      }
+
+      briqueDoesNotExist.should.throw(Error, 'Brique "hi" does not exist');
+    });
+
     it('sets the child parent', function() {
       brique.childs[0].parent.should.equal(brique);
     });
