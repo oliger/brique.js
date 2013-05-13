@@ -25,7 +25,7 @@ describe('Brique', function() {
     });
 
     after(function() {
-      Brique.registery = {};
+      Brique.registry = {};
     });
 
     it('sets the element', function() {
@@ -49,12 +49,12 @@ describe('Brique', function() {
       brique.el.innerHTML.should.equal('<div data-brique-kind="hello" data-brique-name="Jimmy">hello Jimmy</div>');
     });
 
-    it('initializes childs', function() {
-      brique.childs[0].initialize.should.have.been.calledOnce;
-      brique.childs[0].should.be.instanceOf(Brique.registery['hello']);
+    it('initializes children', function() {
+      brique.children[0].initialize.should.have.been.calledOnce;
+      brique.children[0].should.be.instanceOf(Brique.registry['hello']);
     });
 
-    it('throws error when brique is not in the registery', function() {
+    it('throws error when brique is not in the registry', function() {
       var BriqueDoesNotExist = Brique.extend({
         getInnerHTML: function() {
           return '<div data-brique-kind="hi"></div>';
@@ -69,15 +69,15 @@ describe('Brique', function() {
     });
 
     it('sets the child parent', function() {
-      brique.childs[0].parent.should.equal(brique);
+      brique.children[0].parent.should.equal(brique);
     });
 
     it('sets the child options', function() {
-      brique.childs[0].options.should.deep.equal({ kind: 'hello', name: 'Jimmy' });
+      brique.children[0].options.should.deep.equal({ kind: 'hello', name: 'Jimmy' });
     });
 
-    it('adds childs in the "childs" array', function() {
-      brique.childs.should.have.length(1);
+    it('adds children in the "children" array', function() {
+      brique.children.should.have.length(1);
     });
   });
 
@@ -116,15 +116,15 @@ describe('Brique', function() {
 
     after(function() {
       Brique.extend.restore();
-      Brique.registery = {};
+      Brique.registry = {};
     });
 
     it('calls the ".extend" method with the passed object', function() {
       stubExtend.should.have.been.calledWith(object);
     });
 
-    it('adds the registered brique to the "registery" array', function() {
-      Brique.registery['test'].should.equal('brique');
+    it('adds the registered brique to the "registry" array', function() {
+      Brique.registry['test'].should.equal('brique');
     });
   });
 
