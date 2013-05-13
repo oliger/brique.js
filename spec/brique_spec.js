@@ -11,12 +11,12 @@ describe('Brique', function() {
 
       Brique.register('hello', {
         initialize: sinon.spy(),
-        content: function() { return 'hello ' + this.options.name; }
+        getInnerHTML: function() { return 'hello ' + this.options.name; }
       });
 
       Test = Brique.extend({
         initialize: sinon.spy(),
-        content: function() {
+        getInnerHTML: function() {
           return '<div data-brique-kind="hello" data-brique-name="Jimmy"></div>';
         }
       });
@@ -56,7 +56,7 @@ describe('Brique', function() {
 
     it('throws error when brique is not in the registery', function() {
       var BriqueDoesNotExist = Brique.extend({
-        content: function() {
+        getInnerHTML: function() {
           return '<div data-brique-kind="hi"></div>';
         }
       });

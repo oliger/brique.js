@@ -14,7 +14,7 @@ Think to a `Brique` as a custom DOM element.
         this.name = options.name || 'stranger';
       },
 
-      content: function() {
+      getInnerHTML: function() {
         return '<h1>Hello ' + this.name + '!</h1>'
       }
     });
