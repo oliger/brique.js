@@ -35,27 +35,4 @@ module.exports = function(grunt) {
       }
     }
   });
-
-  //grunt.registerMultiTask('transpile', 'Transpile ES6 modules', function() {
-    //var Compiler = require('es6-module-transpiler').Compiler;
-
-    //var options = this.options({
-      //format: 'amd'
-    //});
-
-    //this.files.forEach(function(f) {
-      //var contents = f.src.map(function(path) {
-        //var compiler = new Compiler(grunt.file.read(path), 'brique', options);
-        //var formats = {
-          //amd: 'toAMD',
-          //globals: 'toGlobals',
-          //cjs: 'toCJS'
-        //};
-
-        //return compiler[formats[options.format]].call(compiler);
-      //});
-
-      //grunt.file.write(f.dest, contents);
-    //});
-  //});
 };
