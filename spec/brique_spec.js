@@ -7,6 +7,7 @@ describe('Brique', function() {
 
     before(function() {
       el = document.createElement('div');
+      el.innerHTML = 'yo';
       options = { foo: 'bar' };
 
       Brique.register('hello', {
@@ -36,8 +37,8 @@ describe('Brique', function() {
       brique.options.should.equal(options);
     });
 
-    it('calls the "initialize" method with options', function() {
-      brique.initialize.should.have.been.calledWith(options);
+    it('calls the "initialize" method with options and element initial content', function() {
+      brique.initialize.should.have.been.calledWithExactly(options, 'yo');
     });
 
     it('does not call the "initialize" method when element is "document"', function() {
