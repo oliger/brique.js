@@ -1,6 +1,6 @@
 # Brique.js
 
-Think to a `Brique` as a custom DOM element.
+Customize your DOM elements with data-attributes.
 
 ## Basic Usage
 
