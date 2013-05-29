@@ -1,3 +1,9 @@
+function createElement(string) {
+  var root = document.createElement('div');
+  root.innerHTML = string;
+  return root.firstChild;
+}
+
 describe('Brique', function() {
   describe('instantiation', function() {
     var el;
@@ -18,7 +24,7 @@ describe('Brique', function() {
       Test = Brique.extend({
         initialize: sinon.spy(),
         getInnerHTML: function() {
-          return '<div data-brique-kind="hello" data-brique-name="Jimmy"></div>';
+          return '<div data-brique-kind="hello" data-brique-name="Jimmy" data-brique-numbers="[1, 2, 3]"></div>';
         }
       });
 
@@ -47,7 +53,7 @@ describe('Brique', function() {
     });
 
     it('sets the content', function() {
-      brique.el.innerHTML.should.equal('<div data-brique-kind="hello" data-brique-name="Jimmy">hello Jimmy</div>');
+      brique.el.innerHTML.should.equal('<div data-brique-kind="hello" data-brique-name="Jimmy" data-brique-numbers="[1, 2, 3]">hello Jimmy</div>');
     });
 
     it('initializes children', function() {
@@ -74,7 +80,11 @@ describe('Brique', function() {
     });
 
     it('sets the child options', function() {
-      brique.children[0].options.should.deep.equal({ kind: 'hello', name: 'Jimmy' });
+      brique.children[0].options.should.deep.equal({
+        kind: 'hello',
+        name: 'Jimmy',
+        numbers: [1, 2, 3]
+      });
     });
 
     it('adds children in the "children" array', function() {
