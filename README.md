@@ -19,7 +19,7 @@ default, it does nothing.
 `#getInnerHTML` - Returns inner HTML of the Brique. By default, it returns an
 empty string.
 
-By default a brique does nothig. Override `#initialize` and `@getInnerHTML` to
+By default a brique does nothig. Override `#initialize` and `#getInnerHTML` to
 pimp your DOM element.
 
 ## Usage
