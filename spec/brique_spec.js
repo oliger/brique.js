@@ -4,8 +4,6 @@ function createElement(string) {
   return root.firstChild;
 }
 
-Brique.use(new DataStrategy());
-
 describe('Brique', function() {
   describe('instantiation', function() {
     var el;
